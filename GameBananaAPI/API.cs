@@ -37,6 +37,8 @@ namespace GameBananaAPI
 
                 var result = await client.GetStringAsync(new Uri(baseUrl));
                 SubfeedData data = JsonConvert.DeserializeObject<SubfeedData>(result);
+
+                client.Dispose();
                 return data;
             }
             catch (Exception)
@@ -57,6 +59,8 @@ namespace GameBananaAPI
                 string baseUrl = APIPaths.GetModProfileUrl(modId);
                 var result = await client.GetStringAsync(new Uri(baseUrl));
                 ProfilePageData data = JsonConvert.DeserializeObject<ProfilePageData>(result);
+
+                client.Dispose();
                 return data;
             }
             catch (Exception)
