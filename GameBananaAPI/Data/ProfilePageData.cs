@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 
 namespace GameBananaAPI.Data
 {
@@ -44,6 +45,6 @@ namespace GameBananaAPI.Data
         public int _nLikeCount { get; set; }
         public int _nViewCount { get; set; }
         public string _sVersion { get; set; }
-        public List<(string, string)> _aRequirements { get; set; }
+        public JArray _aRequirements { get; set; }
     }
 }

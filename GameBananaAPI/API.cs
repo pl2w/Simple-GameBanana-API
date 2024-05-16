@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using GameBananaAPI.Data;
 using Newtonsoft.Json;
@@ -8,7 +9,6 @@ namespace GameBananaAPI
 {
     public static class API
     {
-        public static WebClient client = new WebClient();
         public static int gameId = -1;
 
         public static void SetCurrentGame(int gameId)
@@ -23,6 +23,8 @@ namespace GameBananaAPI
 
             try
             {
+                HttpClient client = new HttpClient();
+
                 string baseUrl = APIPaths.BaseGameUrl + gameId;
                 if(sort != string.Empty)
                     baseUrl += $"/Subfeed?_sSort={sort}";
@@ -33,7 +35,7 @@ namespace GameBananaAPI
                 if (excludeSections != string.Empty)
                     baseUrl += $"&_csvModelExclusions={excludeSections}";
 
-                var result = await client.DownloadStringTaskAsync(new Uri(baseUrl));
+                var result = await client.GetStringAsync(new Uri(baseUrl));
                 SubfeedData data = JsonConvert.DeserializeObject<SubfeedData>(result);
                 return data;
             }
@@ -50,8 +52,10 @@ namespace GameBananaAPI
 
             try
             {
+                HttpClient client = new HttpClient();
+
                 string baseUrl = APIPaths.GetModProfileUrl(modId);
-                var result = await client.DownloadStringTaskAsync(new Uri(baseUrl));
+                var result = await client.GetStringAsync(new Uri(baseUrl));
                 ProfilePageData data = JsonConvert.DeserializeObject<ProfilePageData>(result);
                 return data;
             }
