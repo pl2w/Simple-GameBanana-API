@@ -47,7 +47,9 @@
     <Compile Include="API.cs" />
     <Compile Include="APIPaths.cs" />
     <Compile Include="Data\AttributesData.cs" />
+    <Compile Include="Data\AuthorData.cs" />
     <Compile Include="Data\CategoryData.cs" />
+    <Compile Include="Data\CreditsData.cs" />
     <Compile Include="Data\FileData.cs" />
     <Compile Include="Data\ImageData.cs" />
     <Compile Include="Data\MediaData.cs" />
