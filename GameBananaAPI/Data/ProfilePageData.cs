@@ -46,5 +46,6 @@ namespace GameBananaAPI.Data
         public int _nViewCount { get; set; }
         public string _sVersion { get; set; }
         public JArray _aRequirements { get; set; }
+        public CreditsData _aCredits { get; set; }
     }
 }
